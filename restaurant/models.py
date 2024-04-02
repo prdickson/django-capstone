@@ -6,6 +6,9 @@ class Booking(models.Model):
     no_of_guests = models.IntegerField()
     booking_date = models.DateField()
 
+    class Meta:
+        ordering = ("booking_date",)
+
 
 class Menu(models.Model):
     title = models.CharField(max_length=255)
@@ -17,3 +20,6 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.get_item()
+
+    class Meta:
+        ordering = ("title",)

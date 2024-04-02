@@ -8,8 +8,7 @@ router.register(r"tables", views.BookingViewSet)
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("menu/", views.MenuView.as_view()),
-    path("menu/<int:pk>", views.SingleMenuView.as_view()),
-    path("booking/", include(router.urls)),
-    path("message/", views.msg),
+    path("api/menu/", views.MenuView.as_view()),
+    path("api/menu/<int:pk>/", views.SingleMenuView.as_view()),
+    path("api/booking/", include(router.urls)),
 ]

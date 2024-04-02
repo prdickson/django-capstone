@@ -7,6 +7,7 @@ from rest_framework.generics import (
     DestroyAPIView,
 )
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -19,20 +20,18 @@ def index(request):
 
 
 class BookingViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 
 
 class MenuView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
 
 class SingleMenuView(RetrieveUpdateAPIView, DestroyAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
-
-
-@api_view()
-def msg(request):
-    return Response({"message": "This view is protected"})
