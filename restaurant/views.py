@@ -22,20 +22,17 @@ def index(request):
 
 class BookingViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 
 
 class MenuView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
 
 class SingleMenuView(RetrieveUpdateAPIView, DestroyAPIView):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
